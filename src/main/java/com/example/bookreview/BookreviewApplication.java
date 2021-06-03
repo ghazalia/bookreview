@@ -53,9 +53,9 @@ public class BookreviewApplication {
             }
 
 //            fetch using searchByName
-            log.info("using search byName @Query");
-            log.info("---------------");
-            log.info(authorRepo.searchByName("ghazali").toString());
+//            log.info("using search byName @Query");
+//            log.info("---------------");
+//            log.info(authorRepo.searchByName("ghazali").toString());
 
         };
 

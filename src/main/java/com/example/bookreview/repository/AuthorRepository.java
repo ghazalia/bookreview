@@ -13,4 +13,9 @@ public interface AuthorRepository extends CrudRepository<Author, Long> {
 
     @Query("select a from Author a where a.name = ?1")
     Author searchByName(String name);
+
+    Author findByEmail(String email);
+
+    @Query ("select a from Author a where a.name like %?1% order by a.name asc")
+    List<Author> findNameByAnyChartersInAscOrder(String writerName);
 }
