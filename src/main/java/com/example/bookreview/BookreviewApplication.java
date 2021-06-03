@@ -41,11 +41,6 @@ public class BookreviewApplication {
                 novelRepo.save(novel);
             }
 
-            Author author1 = new Author();
-            author1.setName("ghazali");
-            author1.setEmail("ghazali@gapps.kptm.edu.my");
-            author1.setPhone("0124121974");
-            authorRepo.save(author1);
 
 //            fetch writer by name
             log.info("name to find: {}" , authorRepo.findByName("ghazali"));
