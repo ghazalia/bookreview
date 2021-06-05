@@ -23,34 +23,35 @@ public class BookreviewApplication {
     @Bean
     public CommandLineRunner demo(AuthorRepository authorRepo, NovelRepository novelRepo) {
         return (args) -> {
-            Faker faker = new Faker();
-
-            for (int i = 0; i < 10; i++) {
-                Author author = new Author();
-                Novel novel = new Novel();
-
-                author.setName(faker.book().author());
-//                ? character
-//                # number
-                author.setPhone(faker.bothify("0##########"));
-                author.setEmail(faker.bothify("?????@gmail.com"));
-                novel.setName(faker.book().title());
-
-                authorRepo.save(author);
-                novel.setAuthor(author);
-                novelRepo.save(novel);
-            }
+//            Faker faker = new Faker();
+//
+//            for (int i = 0; i < 10; i++) {
+//                Author author = new Author();
+//                Novel novel = new Novel();
+//
+//                author.setName(faker.book().author());
+////                ? character
+////                # number
+//                author.setPhone(faker.bothify("0##########"));
+//                author.setEmail(faker.bothify("?????@gmail.com"));
+//                novel.setName(faker.book().title());
+//
+//                authorRepo.save(author);
+//                novel.setAuthor(author);
+//                novelRepo.save(novel);
+//            }
 
 
 //            fetch writer by name
-            log.info("name to find: {}" , authorRepo.findByName("ghazali"));
+//            Author authorStored = authorRepo.searchByEmail("ghaz@gmail.com");
+//            log.info("email to find: {}" , authorStored.getName());
 
 //            fetch all writers
-            log.info("All writers");
-            log.info("---------------");
-            for (Author author : authorRepo.findAll()) {
-                log.info(author.toString());
-            }
+//            log.info("All writers");
+//            log.info("---------------");
+//            for (Author author : authorRepo.findAll()) {
+//                log.info(author.toString());
+//            }
 
 //            fetch using searchByName
 //            log.info("using search byName @Query");

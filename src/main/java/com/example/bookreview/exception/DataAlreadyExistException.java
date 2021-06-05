@@ -1,11 +1,16 @@
 package com.example.bookreview.exception;
 
 public class DataAlreadyExistException extends RuntimeException {
-    public DataAlreadyExistException() {
-        super();
-    }
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
-    public DataAlreadyExistException(String cause) {
-        super(cause);
-    }
+	public DataAlreadyExistException() {
+		super();
+	}
+
+	public DataAlreadyExistException(String cause) {
+		super(cause);
+	}
 }

@@ -8,13 +8,18 @@
 </head>
 <body>
 <div class="card">
+    <div class="alert alert-danger" role="alert" th:if="${error != null}" th:text="${error}">
+
+    </div>
     <div class="card-header"><h5 class="card-title">Create New Author</h5></div>
     <div class="card-body">
-        <form data-th-object="${author}" method="post" data-th-action="@{/author/create}">
+        <form th:object="${author}" method="post" th:action="@{/author/create}">
             <div class="form-group">
                 <label for="email">Email address</label>
-                <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter email" data-th-field="*{email}">
-                <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                <input type="email" class="form-control" id="email"
+                       aria-describedby="emailHelp" placeholder="Enter email" th:field="*{email}">
+                <small id="emailHelp" class="form-text text-muted">
+                    We'll never share your email with anyone else.</small>
             </div>
             <div class="form-group">
                 <label for="name">Name</label>
@@ -23,7 +28,7 @@
             <div class="form-group">
                 <label class="form-check-label" for="phone">Phone Number</label>
                 <input type="tel" class="form-control" id="phone" placeholder="Phone Number" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" data-th-field="*{phone}">
-                <small>Format: 6123-456-7890</small>
+                <small>Format: 023-456-7890</small>
             </div>
             <button type="submit" class="btn btn-primary">Submit</button>
             <a class="btn btn-primary" data-th-href="@{/author}">Cancel</a>

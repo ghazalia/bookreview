@@ -1,57 +1,69 @@
 package com.example.bookreview.model;
 
-import javax.persistence.*;
 import java.io.Serializable;
+
+import javax.persistence.Column;
+import javax.persistence.EmbeddedId;
+import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.MapsId;
+import javax.persistence.Table;
 
 @Entity
 @Table(name = "review")
 public class Review implements Serializable {
 
-    @EmbeddedId
-    ReviewedKey id;
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
-    @Column(name = "description")
-    private String description;
+	@EmbeddedId
+	ReviewedKey id;
 
-    @ManyToOne
-    @MapsId("reviewer_id")
-    @JoinColumn(name="reviewer_id")
-    private Reviewer reviewer;
+	@Column(name = "description")
+	private String description;
 
-    @ManyToOne
-    @MapsId("novelId")
-    @JoinColumn(name = "novel_id")
-    private Novel novel;
+	@ManyToOne
+	@MapsId("reviewer_id")
+	@JoinColumn(name = "reviewer_id")
+	private Reviewer reviewer;
 
-    public String getDescription() {
-        return description;
-    }
+	@ManyToOne
+	@MapsId("novelId")
+	@JoinColumn(name = "novel_id")
+	private Novel novel;
 
-    public void setDescription(String description) {
-        this.description = description;
-    }
+	public String getDescription() {
+		return description;
+	}
 
-    public ReviewedKey getId() {
-        return id;
-    }
+	public void setDescription(String description) {
+		this.description = description;
+	}
 
-    public void setId(ReviewedKey id) {
-        this.id = id;
-    }
+	public ReviewedKey getId() {
+		return id;
+	}
 
-    public Reviewer getReviewer() {
-        return reviewer;
-    }
+	public void setId(ReviewedKey id) {
+		this.id = id;
+	}
 
-    public void setReviewer(Reviewer reviewer) {
-        this.reviewer = reviewer;
-    }
+	public Reviewer getReviewer() {
+		return reviewer;
+	}
 
-    public Novel getNovel() {
-        return novel;
-    }
+	public void setReviewer(Reviewer reviewer) {
+		this.reviewer = reviewer;
+	}
 
-    public void setNovel(Novel novel) {
-        this.novel = novel;
-    }
+	public Novel getNovel() {
+		return novel;
+	}
+
+	public void setNovel(Novel novel) {
+		this.novel = novel;
+	}
 }

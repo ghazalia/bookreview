@@ -1,11 +1,16 @@
 package com.example.bookreview.exception;
 
 public class DataNotFoundException extends RuntimeException {
-    public DataNotFoundException() {
-        super();
-    }
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
-    public DataNotFoundException(String message) {
-        super(message);
-    }
+	public DataNotFoundException() {
+		super();
+	}
+
+	public DataNotFoundException(String message) {
+		super(message);
+	}
 }
