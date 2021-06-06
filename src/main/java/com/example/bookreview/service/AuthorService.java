@@ -84,4 +84,8 @@ public class AuthorService {
 		}
 	}
 
+	public Author getAuthorById(Long authorId) {
+		return authorRepo.findById(authorId).orElseThrow(() -> new DataNotFoundException("Not Found"));
+	}
+
 }

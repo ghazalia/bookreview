@@ -7,8 +7,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import com.example.bookreview.exception.DataNotFoundException;
 import com.example.bookreview.model.Author;
 import com.example.bookreview.service.AuthorService;
 
@@ -49,4 +51,56 @@ public class AuthorController {
 		}
 		return "redirect:/author";
 	}
+
+	@GetMapping("/author/edit/{authorId}")
+	public String editAuthor(@PathVariable("authorId") Long authorId, Model model, Author author) {
+		try {
+			author = authorService.getAuthorById(authorId);
+			model.addAttribute("author", author);
+			return "authors/edit";
+		} catch (DataNotFoundException ex) {
+			model.addAttribute("error", ex.getMessage());
+			return "authors/edit";
+		}
+	}
+
+	@PostMapping("/author/edit/{authorId}")
+	public String updateAuthor(@PathVariable("authorId") Long authorId, Model model, @ModelAttribute Author author) {
+		try {
+			author.setId(authorId);
+			authorService.updateAuthor(author);
+			return "redirect:/author/view/" + String.valueOf(author.getId());
+		} catch (DataNotFoundException ex) {
+			model.addAttribute("error", ex.getMessage());
+			author.setId(authorId);
+			model.addAttribute("author", author);
+			return "authors/edit/";
+		}
+	}
+
+	@GetMapping("/author/view/{authorId}")
+	public String viewAuthor(@PathVariable("authorId") Long authorId, Model model) {
+		try {
+			model.addAttribute("author", authorService.getAuthorById(authorId));
+			return "authors/view";
+		} catch (DataNotFoundException ex) {
+			model.addAttribute("error", ex.getMessage());
+			model.addAttribute("author", new Author());
+			return "authors/view";
+		}
+	}
+
+	@GetMapping("/author/delete/{authorId}")
+	public String deleteAuthor(@PathVariable("authorId") Long authorId, Model model) {
+		try {
+			authorService.delete(authorId);
+			model.addAttribute("success", "Data was deleted");
+
+		} catch (Exception ex) {
+			model.addAttribute("error", ex.getMessage());
+
+		}
+		return "authors/index";
+	}
+
 }
