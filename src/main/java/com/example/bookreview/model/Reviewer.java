@@ -10,24 +10,27 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
+import javax.validation.constraints.NotEmpty;
+
+import org.springframework.validation.annotation.Validated;
 
 @Entity
 @Table(name = "reviewer")
+@Validated
 public class Reviewer {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	@NotNull
+	@NotEmpty(message = "Name is required")
 	@Column(name = "name")
 	private String name;
 
-	@NotNull
+	@NotEmpty(message = "Name is required")
 	@Column(name = "phone")
 	private String phone;
 
-	@NotNull
+	@NotEmpty(message = "Valid email is required")
 	@Column(name = "email", unique = true)
 	private String email;
 

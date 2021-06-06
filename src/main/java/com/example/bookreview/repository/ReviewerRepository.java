@@ -1,9 +1,16 @@
 package com.example.bookreview.repository;
 
-import com.example.bookreview.model.Reviewer;
+import java.util.Optional;
+
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
+import com.example.bookreview.model.Reviewer;
+
 @Repository
-interface ReviewerRepository extends CrudRepository<Reviewer, Long> {
+public interface ReviewerRepository extends CrudRepository<Reviewer, Long> {
+
+	@Query("select r from Reviewer r where r.email = ?1")
+	Optional<Reviewer> searchReviewerByEmail(String email);
 }
