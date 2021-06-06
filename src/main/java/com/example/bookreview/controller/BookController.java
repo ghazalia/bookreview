@@ -61,4 +61,16 @@ public class BookController {
 			return "/novel/create";
 		}
 	}
+
+	@GetMapping("novel/view/{bookId}")
+	public String viewNovel(@PathVariable("bookId") Long bookId, Model model) {
+		try {
+			model.addAttribute("novel", novelService.getNovelById(bookId));
+			return "novel/view";
+		} catch (DataNotFoundException ex) {
+			model.addAttribute("error", ex.getMessage());
+			model.addAttribute("novel", new Novel());
+			return "novel/view";
+		}
+	}
 }

@@ -58,6 +58,14 @@ public class Novel {
 		this.author = author;
 	}
 
+	public List<Reviewer> getReviewerList() {
+		return reviewerList;
+	}
+
+	public List<Review> getReviews() {
+		return reviews;
+	}
+
 	@Override
 	public String toString() {
 		return "Novel [author=" + author + ", id=" + id + ", name=" + name + "]";

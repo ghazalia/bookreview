@@ -1,5 +1,6 @@
 package com.example.bookreview.service;
 
+import com.example.bookreview.exception.DataNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -22,4 +23,7 @@ public class NovelService {
 		}
 	}
 
+	public Novel getNovelById(Long bookId) {
+		return novelRepo.findById(bookId).orElseThrow(() -> new DataNotFoundException("Book does not exist"));
+	}
 }
