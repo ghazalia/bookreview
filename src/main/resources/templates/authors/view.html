@@ -38,7 +38,6 @@
 				<h5 class="card-title">View Author</h5>
 			</div>
 			<div class="card-body">
-			
 					<div class="form-group" th:object="${author.id}">
 						<label for="email">Email address</label> <input type="email"
 							class="form-control" id="email" th:field="${author.email}" disabled>
@@ -53,10 +52,34 @@
 							type="tel" class="form-control" id="phone"
 							placeholder="Phone Number" disabled th:field="${author.phone}">
 					</div>
-					<a class="btn btn-primary" data-th-href="@{/author}">List</a>
-	
+					<a class="btn btn-primary" data-th-href="@{/author}">Back to Author List</a>
 			</div>
 		</div>
+		  <div class="card">
+            <div class="card-header">
+                <h5 class="card-title">Novels</h5>
+            </div>
+            <div class="card-body">
+                <table class="table table-striped" id="author" style="width:100%" th:if="${author.novels != null}">
+                    <thead>
+                        <tr>
+                            <th scope="col">Novel Name</th>
+                            <th scope="col">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="novel : ${author.novels}">
+                            <td th:text="${novel.name}"></td>
+                            <td><a th:href="@{/novel/edit/} + ${novel.id}"
+                                class="btn btn-primary">Edit</a> <a
+                                th:href="@{/novel/delete/} + ${novel.id}"
+                                class="btn btn-danger">Delete</a></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <a class="btn btn-primary" data-th-href="@{/novel/new/} + ${author.id}" >Add New Book</a>
+            </div>
+        </div>
 	</div>
 
 	<script crossorigin="anonymous"
