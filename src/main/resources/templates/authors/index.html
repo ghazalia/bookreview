@@ -37,6 +37,9 @@
 	   <div class="alert alert-danger" role="alert" th:if="${error != null}"
                 th:text="${error}">
         </div>
+        <div class="alert alert-danger" role="alert" th:if="${critical}"
+                th:text="${critical}">
+        </div>
         <div class="alert alert-success" role="alert" th:if="${succcess != null}"
                 th:text="${error}">
         </div>

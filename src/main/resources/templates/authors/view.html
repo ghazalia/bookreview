@@ -59,7 +59,7 @@
             <div class="card-header">
                 <h5 class="card-title">Novels</h5>
             </div>
-            <div class="card-body">
+            <div class="card-body" th:if="${error == null}">
                 <table class="table table-striped" id="author" style="width:100%" th:if="${author.novels != null}">
                     <thead>
                         <tr>
