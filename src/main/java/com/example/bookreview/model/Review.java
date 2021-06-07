@@ -32,7 +32,7 @@ public class Review implements Serializable {
 
 	@ManyToOne
 	@MapsId("novelId")
-	@JoinColumn(name = "novel_id")
+	@JoinColumn(name = "novelId")
 	private Novel novel;
 
 	public String getDescription() {
