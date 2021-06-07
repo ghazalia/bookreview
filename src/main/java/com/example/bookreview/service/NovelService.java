@@ -1,10 +1,14 @@
 package com.example.bookreview.service;
 
-import com.example.bookreview.exception.DataNotFoundException;
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.StreamSupport;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.bookreview.exception.DataAlreadyExistException;
+import com.example.bookreview.exception.DataNotFoundException;
 import com.example.bookreview.model.Novel;
 import com.example.bookreview.repository.NovelRepository;
 
@@ -25,5 +29,9 @@ public class NovelService {
 
 	public Novel getNovelById(Long bookId) {
 		return novelRepo.findById(bookId).orElseThrow(() -> new DataNotFoundException("Book does not exist"));
+	}
+
+	public List<Novel> getAllNovels() {
+		return StreamSupport.stream(novelRepo.findAll().spliterator(), false).collect(Collectors.toList());
 	}
 }

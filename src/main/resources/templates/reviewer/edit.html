@@ -35,11 +35,11 @@
 			<div class="alert alert-danger" role="alert" th:if="${error != null}"
 				th:text="${error}"></div>
 			<div class="card-header">
-				<h5 class="card-title">Edit Author</h5>
+				<h5 class="card-title">Edit Reviewer</h5>
 			</div>
 			<div class="card-body">
-				<form th:object="${author}" method="post"
-					th:action="@{/author/edit/} + ${author.id}">
+				<form th:object="${reviewer}" method="post"
+					th:action="@{/reviewer/edit/} + ${reviewer.id}">
 					<div class="form-group">
 						<label for="email">Email address</label> <input type="email"
 							class="form-control" id="email" aria-describedby="emailHelp"
@@ -60,7 +60,7 @@
 							023-456-7890</small>
 					</div>
 					<button type="submit" class="btn btn-primary">Submit</button>
-					<a class="btn btn-primary" data-th-href="@{/author}">Cancel</a>
+					<a class="btn btn-primary" data-th-href="@{/reviewer}">Cancel</a>
 				</form>
 			</div>
 		</div>
