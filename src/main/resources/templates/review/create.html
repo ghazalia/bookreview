@@ -44,12 +44,14 @@
 						<label for="novels">Choose a novel to review:</label> <select
 							class="form-control form-control-sm" id="novels"
 							th:field="*{novelId}">
-							<option th:each="novel : ${novelList}"
-							             th:value="${novel.id}"
-							             th:text="${novel.name}"
-							></option>
-
+							<option th:each="novel : ${novelList}" th:value="${novel.id}"
+								th:text="${novel.name}"></option>
 						</select>
+					</div>
+					<div class="form-group">
+						<label for="bookReview">Write your book review</label>
+						<textarea class="form-control" id="bookReview" rows="10"
+							th:field=*{description}></textarea>
 					</div>
 					<button type="submit" class="btn btn-primary">Submit</button>
 					<a class="btn btn-primary"
