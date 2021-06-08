@@ -43,8 +43,8 @@
             <form th:object="${review}" method="post" th:action="@{/review/new/} + ${review.reviewerId}">
                 <input type="hidden" th:field="*{reviewerId}">
                 <div class="form-group">
-                    <label for="novels">Choose a novel to review:</label> <select
-                        class="form-control form-control-sm" id="novels"
+                    <label for="novels">Choose a novel to review:</label>
+                    <select class="form-control form-control-sm" id="novels"
                         th:field="*{novelId}">
                     <option th:each="novel : ${novelList}" th:value="${novel.id}"
                             th:text="${novel.name}"></option>

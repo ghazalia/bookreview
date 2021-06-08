@@ -30,7 +30,7 @@ public class BookController {
     @Autowired
     private AuthorService authorService;
 
-    @GetMapping("novel/new/{authorId}")
+    @GetMapping("/novel/{authorId}/new/")
     public String newBook(@PathVariable("authorId") Long authorId, Novel novel, Model model) {
         try {
             Author author = authorService.getAuthorById(authorId);
@@ -45,17 +45,8 @@ public class BookController {
         }
     }
 
-    @PostMapping("novel/new/{authorId}")
-    public String save(@PathVariable("authorId") Long authorId, @Valid @ModelAttribute("novel") Novel novel, Model model,
-                       BindingResult result) {
-
-        if (result.hasErrors()) {
-            log.info("Error", result.getFieldError());
-//            Author author = authorService.getAuthorById(authorId);
-//            novel.setAuthor(author);
-//            model.addAttribute("novel", novel);
-            return "novel/create";
-        }
+    @PostMapping("/novel/{authorId}/new/")
+    public String save(@PathVariable("authorId") Long authorId, @ModelAttribute Novel novel, Model model) {
 
         try {
             Author author = authorService.getAuthorById(authorId);

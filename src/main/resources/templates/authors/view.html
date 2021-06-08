@@ -70,7 +70,7 @@
                     <tbody>
                         <tr th:each="novel : ${author.novels}">
                             <td>
-								<a th:href="@{/novel/view/} + ${novel.id}" th:text="${novel.name}"></a>
+								<a th:href="@{/novel/view/} + ${novel.id}" th:text="${novel.name}" ></a>
 							</td>
                             <td><a th:href="@{/novel/edit/} + ${novel.id}"
                                 class="btn btn-primary">Edit</a> <a
@@ -79,7 +79,7 @@
                         </tr>
                     </tbody>
                 </table>
-                <a class="btn btn-primary" data-th-href="@{/novel/new/} + ${author.id}" >Add New Book</a>
+                <a class="btn btn-primary" data-th-href="@{/novel/} + *{author.id} + @{/new/}" >Add New Book</a>
             </div>
         </div>
 	</div>

@@ -38,18 +38,15 @@
 				<h5 class="card-title">Add New Novel</h5>
 			</div>
 			<div class="card-body">
-				<form th:object="${novel}" method="post" th:action="@{/novel/new/} + *{author.id}">
+				<form th:object="${novel}" method="post" th:action="@{/novel/} + *{author.id} + @{/new/}">
+
+					<input type="hidden" th:field="*{author.id}" th:value="*{author.id}"/>
 					
 					<div class="form-group">
-						<label for="title">Novel Title</label> <input type="text"
+						<label for="title">Novel Title</label>
+						<input type="text"
 							class="form-control" id="title" placeholder="Enter Novel Title"
-							th:field="*{name}">
-							
-						<!--  Thymeleafspring.pdf page 23  Field Errors-->
-						<ul th:if="${#fields.hasErrors('*')}">
-							<li th:each="err: ${#fields.errors('*')}" th:text="${err}" />
-						</ul>
-						
+							th:field="*{name}" minlength="1" required>
 					</div>
 					
 					<button type="submit" class="btn btn-primary">Submit</button>

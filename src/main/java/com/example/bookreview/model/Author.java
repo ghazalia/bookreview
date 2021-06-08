@@ -11,7 +11,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "writer")
@@ -21,15 +24,17 @@ public class Author {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	@NotNull
+	@NotEmpty(message="Name is required")
+	@Size(min = 3, message = "Name must be at least 3 characters")
 	@Column(name = "name")
 	private String name;
 
-	@NotNull
+	@NotEmpty(message = "Must use a valid phone number")
 	@Column(name = "phone")
 	private String phone;
 
-	@NotNull
+	@NotEmpty(message = "Require a valid email")
+	@Email(message = "Require a valid email")
 	@Column(name = "email", unique = true)
 	private String email;
 

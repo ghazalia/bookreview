@@ -23,8 +23,8 @@ public class Novel {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	@NotEmpty
-	@Size(min = 1)
+	@NotEmpty (message="Book name is required")
+	@Size(min = 1, message = "Book title minimum size is 1 character")
 	@Column(name = "name")
 	private String name;
 

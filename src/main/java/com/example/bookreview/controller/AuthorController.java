@@ -37,7 +37,7 @@ public class AuthorController {
 	}
 
 	@PostMapping("author/create")
-	public String save(Model model, @Valid @ModelAttribute Author author, BindingResult result) {
+	public String save(Model model, @Valid Author author, BindingResult result) {
 		log.info("Check ModelAttribute >>> {}", author.getName());
 		log.info("Check ModelAttribute >>> {}", author.getEmail());
 		log.info("Check ModelAttribute >>> {}", author.getPhone());
