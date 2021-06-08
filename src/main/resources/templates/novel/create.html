@@ -32,20 +32,29 @@
 	</nav>
 	<div class="container">
 		<div class="card">
-			<div class="alert alert-danger" role="alert" th:if="${error != null}"
-				th:text="${error}">
-			</div>
+			<div class="alert alert-danger" role="alert" th:if="${exception != null}"
+				th:text="${exception}"></div>
 			<div class="card-header">
 				<h5 class="card-title">Add New Novel</h5>
 			</div>
 			<div class="card-body">
-				<form th:object="${novel}" method="post" th:action="@{/novel/new/} + *{author.id}" >
+				<form th:object="${novel}" method="post" th:action="@{/novel/new/} + *{author.id}">
+					
 					<div class="form-group">
-						<label for="title">Email address</label>
-						<input type="text" class="form-control" id="title" placeholder="Enter Novel Title" th:field="*{name}">
+						<label for="title">Novel Title</label> <input type="text"
+							class="form-control" id="title" placeholder="Enter Novel Title"
+							th:field="*{name}">
+							
+						<!--  Thymeleafspring.pdf page 23  Field Errors-->
+						<ul th:if="${#fields.hasErrors('*')}">
+							<li th:each="err: ${#fields.errors('*')}" th:text="${err}" />
+						</ul>
+						
 					</div>
+					
 					<button type="submit" class="btn btn-primary">Submit</button>
-					<a class="btn btn-primary" data-th-href="@{/author/view/} + *{author.id}">Cancel</a>
+					<a class="btn btn-primary"
+						data-th-href="@{/author/view/} + *{author.id}">Cancel</a>
 				</form>
 			</div>
 		</div>

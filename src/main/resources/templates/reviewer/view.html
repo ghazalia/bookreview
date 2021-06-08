@@ -7,9 +7,9 @@
 	href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
 	integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l"
 	rel="stylesheet">
-	<link
-    href="https://cdn.datatables.net/1.10.25/css/dataTables.bootstrap4.min.css"
-    rel="stylsheet">
+<link
+	href="https://cdn.datatables.net/1.10.25/css/dataTables.bootstrap4.min.css"
+	rel="stylsheet">
 </head>
 <body>
 	<nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -70,16 +70,21 @@
 					<thead>
 						<tr>
 							<th scope="col">Novel Name</th>
+							<th scope="col">Review</th>
 							<th scope="col">Action</th>
 						</tr>
 					</thead>
 					<tbody>
 						<tr th:each="review : ${reviewer.reviews}">
-							<td><a th:href="@{/review/view/} + ${review.novel.id} + @{/} + ${reviewer.id}"
+							<td><a
+								th:href="@{/review/view/} + ${review.novel.id} + @{/} + ${reviewer.id}"
 								th:text="${review.novel.name}"></a></td>
-							<td><a th:href="@{/review/edit/} + ${review.novel.id} + @{/} + ${reviewer.id}"
+							<td th:text="${review.description}"></td>
+							<td><a
+								th:href="@{/review/edit/} + ${review.novel.id} + @{/} + ${reviewer.id}"
 								class="btn btn-primary">Edit</a> <a
-								th:href="@{/review/delete/} + ${review.novel.id} + @{/} + ${reviewer.id}" class="btn btn-danger">Delete</a></td>
+								th:href="@{/review/delete/} + ${review.novel.id} + @{/} + ${reviewer.id}"
+								class="btn btn-danger">Delete</a></td>
 						</tr>
 					</tbody>
 				</table>

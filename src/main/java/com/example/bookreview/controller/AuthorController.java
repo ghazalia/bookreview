@@ -1,10 +1,13 @@
 package com.example.bookreview.controller;
 
+import javax.validation.Valid;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -34,10 +37,14 @@ public class AuthorController {
 	}
 
 	@PostMapping("author/create")
-	public String save(Model model, @ModelAttribute Author author) {
+	public String save(Model model, @Valid @ModelAttribute Author author, BindingResult result) {
 		log.info("Check ModelAttribute >>> {}", author.getName());
 		log.info("Check ModelAttribute >>> {}", author.getEmail());
 		log.info("Check ModelAttribute >>> {}", author.getPhone());
+
+		if (result.hasErrors()) {
+			return "authors/create";
+		}
 
 		try {
 			authorService.save(author);
@@ -45,7 +52,7 @@ public class AuthorController {
 			log.info("-----------------");
 			log.info("Check Exception >>> {}", ex.toString());
 			log.info("-----------------");
-			model.addAttribute("error", ex.getMessage());
+			model.addAttribute("exception", ex.getMessage());
 			model.addAttribute("author", author);
 			return "authors/create";
 		}
