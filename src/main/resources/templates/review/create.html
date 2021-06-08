@@ -34,12 +34,14 @@
 		<div class="card">
 			<div class="alert alert-danger" role="alert" th:if="${error != null}"
 				th:text="${error}"></div>
+			<div class="alert alert-danger" role="alert" th:if="${exception != null}"
+                th:text="${exception}"></div>
 			<div class="card-header">
 				<h5 class="card-title">Add New Novel</h5>
 			</div>
 			<div class="card-body">
-				<form th:object="${review}" method="post"
-					th:action="@{/review/new/} + ${review.reviewerId}">
+				<form th:object="${review}" method="post" th:action="@{/review/new/} + ${review.reviewerId}">
+				    <input type="hidden" th:field="*{reviewerId}">
 					<div class="form-group">
 						<label for="novels">Choose a novel to review:</label> <select
 							class="form-control form-control-sm" id="novels"

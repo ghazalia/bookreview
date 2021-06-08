@@ -20,6 +20,14 @@ public final class ReviewedKey implements Serializable {
 	@Column(name = "reviewer_id")
 	private Long reviewerId;
 
+	public ReviewedKey() {
+	};
+
+	public ReviewedKey(Long reviewerId, Long novelId) {
+		this.reviewerId = reviewerId;
+		this.novelId = novelId;
+	}
+
 	public Long getNovelId() {
 		return novelId;
 	}

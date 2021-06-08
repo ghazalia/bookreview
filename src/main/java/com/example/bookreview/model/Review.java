@@ -26,7 +26,7 @@ public class Review implements Serializable {
 	private String description;
 
 	@ManyToOne
-	@MapsId("reviewer_id")
+	@MapsId("reviewerId")
 	@JoinColumn(name = "reviewer_id")
 	private Reviewer reviewer;
 

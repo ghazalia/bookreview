@@ -34,4 +34,8 @@ public class NovelService {
 	public List<Novel> getAllNovels() {
 		return StreamSupport.stream(novelRepo.findAll().spliterator(), false).collect(Collectors.toList());
 	}
+
+	public boolean isPresent(Long novelId) {
+		return novelRepo.findById(novelId).isPresent() ? true : false;
+	}
 }

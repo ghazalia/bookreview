@@ -76,10 +76,10 @@
 					<tbody>
 						<tr th:each="review : ${reviewer.reviews}">
 							<td><a th:href="@{/review/view/} + ${review.novel.id} + @{/} + ${reviewer.id}"
-								th:text="${reviwer.novel.name}"></a></td>
-							<td><a th:href="@{/review/edit/} + ${reviewer.novel.id} + @{/} + ${reviewer.id}"
+								th:text="${review.novel.name}"></a></td>
+							<td><a th:href="@{/review/edit/} + ${review.novel.id} + @{/} + ${reviewer.id}"
 								class="btn btn-primary">Edit</a> <a
-								th:href="@{/review/delete/} + ${reviewer.novel.id} + @{/} + ${reviewer.id}" class="btn btn-danger">Delete</a></td>
+								th:href="@{/review/delete/} + ${review.novel.id} + @{/} + ${reviewer.id}" class="btn btn-danger">Delete</a></td>
 						</tr>
 					</tbody>
 				</table>
